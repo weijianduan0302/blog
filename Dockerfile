@@ -1,4 +1,6 @@
-FROM ruby:3.3
+FROM ruby:3.3-bullseye
+
+LABEL maintainer="weijianduan0302@gmail.com"
 
 COPY . /src
 
