@@ -4,7 +4,7 @@ title: 关于南京大学李樾老师 SICP 课堂上碎碎念
 date: 2024-06-12 09:29 +0000
 ---
 
-视频连接：(“大学除了专业知识，还应该学些什么？” 南京大学《SICP》课堂李樾老师的絮絮叨叨)[https://www.bilibili.com/video/BV1uR4y167pA/?share_source=copy_web&vd_source=939a5033dc1ec4f712d59a4a4042e169]
+视频传送门：[“大学除了专业知识，还应该学些什么？” 南京大学《SICP》课堂李樾老师的絮絮叨叨](https://www.bilibili.com/video/BV1uR4y167pA/?share_source=copy_web&vd_source=939a5033dc1ec4f712d59a4a4042e169)
 
 —
 
