@@ -28,7 +28,7 @@ twitter_username: WeijianDuan
 github_username: weijianduan0302
 
 # Build settings
-theme: minima
+# [removed] theme: minima
 plugins:
   - jekyll-feed
 
