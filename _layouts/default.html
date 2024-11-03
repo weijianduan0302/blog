@@ -3,6 +3,11 @@
 
   {%- include head.html -%}
 
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+  </head>
+
   <body>
 
     {%- include header.html -%}
@@ -42,6 +47,22 @@
               document.removeEventListener('click', closeDropdown);
             }
           });
+        });
+      }
+    });
+    </script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        new Swiper('.swiper', {
+          slidesPerView: 1.2,
+          centeredSlides: true,
+          spaceBetween: 16,
+          pagination: {
+            el: '.swiper-pagination',
+            dynamicBullets: true,
+          },
         });
       }
     });

@@ -10,23 +10,63 @@ layout: default
   <div class="two-column-layout">
     <div class="column tweets-column">
       <h2 class="post-list-heading">{{ page.list_title | default: "碎碎念" }}</h2>
-      <div class="tweets-container">
-        {%- assign sorted_tweets = site.tweets | sort: 'date' | reverse -%}
-        {%- for tweet in sorted_tweets limit:8 -%}
-        <div class="tweet-card">
-          <div class="tweet-header">
-            <div class="tweet-datetime">
-              <a href="{{ tweet.url | relative_url }}" class="tweet-date">
-                {{ tweet.date | date: "%Y-%m-%d" }}
-                <span class="tweet-time">{{ tweet.date | date: "%H:%M" }}</span>
-              </a>
+      
+      <!-- 移动端滑动视图 -->
+      <div class="tweets-swiper">
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            {%- assign sorted_tweets = site.tweets | sort: 'date' | reverse -%}
+            {%- for tweet in sorted_tweets limit:8 -%}
+            <div class="swiper-slide">
+              <div class="tweet-card">
+                <div class="tweet-header">
+                  <div class="tweet-datetime">
+                    <a href="{{ tweet.url | relative_url }}" class="tweet-date">
+                      {{ tweet.date | date: "%Y-%m-%d" }}
+                      <span class="tweet-time">{{ tweet.date | date: "%H:%M" }}</span>
+                    </a>
+                  </div>
+                </div>
+                <div class="tweet-content">
+                  {{ tweet.content }}
+                </div>
+              </div>
+            </div>
+            {%- endfor -%}
+            {% if site.tweets.size > 8 %}
+            <div class="swiper-slide view-all-slide">
+              <div class="tweet-card view-all-card">
+                <a href="/tweets/" class="view-all-link">
+                  <span class="view-all-text">查看所有碎碎念</span>
+                  <span class="view-all-arrow">→</span>
+                </a>
+              </div>
+            </div>
+            {% endif %}
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+
+      <!-- 桌面端网格视图 -->
+      <div class="tweets-grid">
+        <div class="tweets-container">
+          {%- for tweet in sorted_tweets limit:8 -%}
+          <div class="tweet-card">
+            <div class="tweet-header">
+              <div class="tweet-datetime">
+                <a href="{{ tweet.url | relative_url }}" class="tweet-date">
+                  {{ tweet.date | date: "%Y-%m-%d" }}
+                  <span class="tweet-time">{{ tweet.date | date: "%H:%M" }}</span>
+                </a>
+              </div>
+            </div>
+            <div class="tweet-content">
+              {{ tweet.content }}
             </div>
           </div>
-          <div class="tweet-content">
-            {{ tweet.content }}
-          </div>
+          {%- endfor -%}
         </div>
-        {%- endfor -%}
       </div>
       
       {% if site.tweets.size > 8 %}

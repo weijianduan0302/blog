@@ -262,3 +262,85 @@
     margin-bottom: 1rem;
   }
 }
+
+// 移动端滑动视图样式
+.tweets-swiper {
+  display: none;
+  margin: 0 -1rem;
+  padding: 1rem 0;
+  
+  .swiper {
+    padding: 1rem;
+  }
+  
+  .swiper-slide {
+    width: 85%;
+  }
+}
+
+.tweets-grid {
+  display: block;
+}
+
+// 响应式布局
+@media screen and (max-width: 768px) {
+  .tweets-swiper {
+    display: block;
+  }
+  
+  .tweets-grid {
+    display: none;
+  }
+  
+  .tweet-card {
+    margin: 0;
+    height: 100%;
+  }
+}
+
+.view-all-slide {
+  .tweet-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+  }
+  
+  .view-all-link {
+    text-decoration: none;
+    color: #666;
+    text-align: center;
+    padding: 1rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    &:hover {
+      color: #0366d6;
+      
+      .view-all-arrow {
+        transform: translateX(4px);
+      }
+    }
+  }
+  
+  .view-all-text {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .view-all-arrow {
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+}
