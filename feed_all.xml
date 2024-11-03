@@ -1,0 +1,30 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ site.title | xml_escape }} - 全部内容</title>
+    <description>{{ site.description | xml_escape }}</description>
+    <link>{{ site.url }}{{ site.baseurl }}/</link>
+    <atom:link href="{{ "/feed_all.xml" | prepend: site.baseurl | prepend: site.url }}" rel="self" type="application/rss+xml"/>
+    <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
+    
+    {% assign all_content = site.posts | concat: site.tweets | sort: 'date' | reverse %}
+    {% for item in all_content limit:20 %}
+      <item>
+        <title>
+          {% if item.collection == "tweets" %}
+            Tweet: {{ item.date | date: "%Y-%m-%d %H:%M" }}
+          {% else %}
+            {{ item.title | xml_escape }}
+          {% endif %}
+        </title>
+        <description>{{ item.content | xml_escape }}</description>
+        <pubDate>{{ item.date | date_to_rfc822 }}</pubDate>
+        <link>{{ item.url | prepend: site.baseurl | prepend: site.url }}</link>
+        <guid isPermaLink="true">{{ item.url | prepend: site.baseurl | prepend: site.url }}</guid>
+      </item>
+    {% endfor %}
+  </channel>
+</rss> 

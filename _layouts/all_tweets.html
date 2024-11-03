@@ -1,0 +1,28 @@
+---
+layout: default
+---
+
+<div class="all-tweets">
+  <div class="tweets-wrapper">
+    <h1 class="page-heading">所有碎碎念</h1>
+    
+    <div class="tweets-container">
+      {%- assign sorted_tweets = site.tweets | sort: 'date' | reverse -%}
+      {%- for tweet in sorted_tweets -%}
+      <div class="tweet-card">
+        <div class="tweet-header">
+          <div class="tweet-datetime">
+            <a href="{{ tweet.url | relative_url }}" class="tweet-date">
+              {{ tweet.date | date: "%Y-%m-%d" }}
+              <span class="tweet-time">{{ tweet.date | date: "%H:%M" }}</span>
+            </a>
+          </div>
+        </div>
+        <div class="tweet-content">
+          {{ tweet.content }}
+        </div>
+      </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div> 

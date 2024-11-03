@@ -3,3 +3,262 @@
 ---
 
 @import "minima";
+
+.two-column-layout {
+  display: flex;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.column {
+  flex: 1;
+}
+
+/* 调整左列宽度 */
+.tweets-column {
+  flex: 0.4;
+  /* 或者使用具体像素: width: 300px; */
+}
+
+.posts-column {
+  flex: 0.6;
+}
+
+/* 响应式布局 - 在小屏幕上变为单列 */
+@media screen and (max-width: 768px) {
+  .two-column-layout {
+    flex-direction: column;
+  }
+
+  .tweets-column,
+  .posts-column {
+    flex: 1;
+  }
+}
+
+.tweets-container {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+.tweet-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.tweet-header {
+  margin-bottom: 0.5rem;
+}
+
+.tweet-timestamp {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.tweet-content {
+  color: #444;
+  line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .tweets-container {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+.tweet-datetime {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.tweet-date {
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.tweet-time {
+  color: #7f8c8d;
+  font-size: 0.9em;
+  margin-left: 8px;
+}
+
+.post-excerpt {
+  color: #666;
+  margin-top: 8px;
+  font-size: 0.9em;
+}
+
+.zoomable {
+    cursor: zoom-in;
+    transition: transform 0.3s ease-in-out;
+    
+    &:hover {
+        transform: scale(1.02);
+    }
+}
+
+.sidebar img {
+    max-width: 100%;
+    height: auto;
+    margin: 10px 0;
+}
+
+.tweet-datetime a {
+  text-decoration: none;
+  color: inherit;
+  
+  &:hover {
+    text-decoration: underline;
+    color: #0366d6;  // 你可以改成你喜欢的颜色
+  }
+}
+
+.tweet-detail {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.tweet-detail-container {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tweet-detail-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.tweet-detail-datetime {
+  font-size: 1.2rem;
+  color: #2c3e50;
+  
+  time {
+    font-weight: 500;
+  }
+  
+  .tweet-detail-time {
+    color: #7f8c8d;
+    margin-left: 1rem;
+    font-size: 0.9em;
+  }
+}
+
+.tweet-detail-content {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #2c3e50;
+  
+  p {
+    margin-bottom: 1.5rem;
+  }
+  
+  img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+  }
+}
+
+.tweet-detail-footer {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+}
+
+.back-link {
+  display: inline-block;
+  color: #0366d6;
+  text-decoration: none;
+  font-weight: 500;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* 适配移动端 */
+@media screen and (max-width: 768px) {
+  .tweet-detail-container {
+    padding: 1.5rem;
+  }
+  
+  .tweet-detail-datetime {
+    font-size: 1rem;
+  }
+  
+  .tweet-detail-content {
+    font-size: 1rem;
+  }
+}
+
+.site-nav {
+  position: relative;
+}
+
+.rss-dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: white;
+  min-width: 90px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  border-radius: 3px;
+  z-index: 1000;
+  margin-top: 4px;
+  font-size: 14px;
+}
+
+.rss-link {
+  display: block;
+  padding: 6px 12px;
+  text-decoration: none;
+  color: #2c3e50;
+  
+  &:hover {
+    background-color: #f5f5f5;
+  }
+}
+
+/* 显示下拉菜单的状态 */
+.page-link[href="/rss/"].active + .rss-dropdown-content {
+  display: block;
+}
+
+.tweets-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.all-tweets {
+  .tweets-container {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .tweet-card {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 1rem;
+  }
+}

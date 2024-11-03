@@ -1,0 +1,23 @@
+---
+layout: default
+---
+<article class="tweet-detail">
+  <div class="tweet-detail-container">
+    <header class="tweet-detail-header">
+      <div class="tweet-detail-datetime">
+        <time datetime="{{ page.date | date_to_xmlschema }}">
+          {{ page.date | date: "%Y年%m月%d日" }}
+          <span class="tweet-detail-time">{{ page.date | date: "%H:%M" }}</span>
+        </time>
+      </div>
+    </header>
+
+    <div class="tweet-detail-content">
+      {{ content }}
+    </div>
+
+    <footer class="tweet-detail-footer">
+      <a href="/" class="back-link">← 返回首页</a>
+    </footer>
+  </div>
+</article> 

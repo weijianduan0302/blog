@@ -15,6 +15,38 @@
 
     {%- include footer.html -%}
 
+    <script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            mediumZoom('.zoomable', {
+                margin: 24,
+                background: 'rgba(0,0,0,0.8)'
+            });
+        });
+    </script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const rssLink = document.getElementById('rssLink');
+      const rssDropdown = document.getElementById('rssDropdown');
+      
+      if (rssLink) {
+        rssLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          rssDropdown.style.display = rssDropdown.style.display === 'block' ? 'none' : 'block';
+          
+          // 点击其他地方关闭下拉菜单
+          document.addEventListener('click', function closeDropdown(e) {
+            if (!e.target.closest('#rssDropdown') && !e.target.closest('#rssLink')) {
+              rssDropdown.style.display = 'none';
+              document.removeEventListener('click', closeDropdown);
+            }
+          });
+        });
+      }
+    });
+    </script>
+
   </body>
 
 </html>

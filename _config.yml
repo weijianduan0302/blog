@@ -21,7 +21,7 @@
 title: Weijian Duan
 email: weijianduan0302@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  记录个人与公共生活的另一种可能
+  想象个人与公共生活另一种可能
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: WeijianDuan
@@ -32,24 +32,44 @@ github_username: weijianduan0302
 plugins:
   - jekyll-feed
 
+# Feed 设置
+feed:
+  posts_limit: 20 # 限制每个 feed 最多显示的条目
+  collections:
+    - tweets # 添加 tweets 集合到 feed 中
+  tags: true # 如果你想为标签生成单独的 feed
+
+# 为不同类型的内容创建单独的 feed
+jekyll-feed:
+  - path: feed_all.xml # 默认 feed，包含所有内容
+    title: 全部内容
+  - path: feed_blog.xml # 仅博客文章
+    title: 博客文章
+    posts_limit: 20
+    categories:
+      - posts
+  - path: feed_tweet.xml # 仅碎碎念
+    title: 碎碎念
+    posts_limit: 20
+    collections:
+      - tweets
+
 header_pages:
-  - about.markdown
-# Exclude from processing.
-# The following items will not be processed, by default.
-# Any item listed under the `exclude:` key here will be automatically added to
-# the internal "default list".
-#
-# Excluded items can be processed by explicitly listing the directories or
-# their entries' file path in the `include:` list.
-#
-# exclude:
-#   - .sass-cache/
-#   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+  - nav_tweets.markdown
+  - nav_blog.markdown
+  - nav_about.markdown
+  - nav_rss.markdown
+
+collections:
+  tweets:
+    output: true
+    permalink: /tweets/:year/:month/:day/:hour:minute/
+
+# Jekyll Compose 默认设置
+jekyll_compose:
+  auto_open: true
+  default_front_matter:
+    # 碎碎念的默认 front matter
+    tweets:
+      layout: tweet
+

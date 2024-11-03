@@ -1,0 +1,161 @@
+.view-all {
+  margin: 20px 0;
+  text-align: right;
+}
+
+.view-all a {
+  color: #666;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+
+.view-all a:hover {
+  text-decoration: underline;
+}
+
+.tweet, .post {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.tweet:last-child, .post:last-child {
+  border-bottom: none;
+}
+
+.two-column-layout {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.column {
+  flex: 1;
+}
+
+.tweets-column {
+  flex-basis: 45%;
+}
+
+.posts-column {
+  flex-basis: 55%;
+}
+
+.tweet-card {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.tweet-datetime {
+  color: #666;
+  font-size: 0.9em;
+  margin-bottom: 0.5rem;
+}
+
+.tweet-time {
+  margin-left: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .two-column-layout {
+    flex-direction: column;
+  }
+  
+  .column {
+    width: 100%;
+  }
+}
+
+.blog-posts {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.blog-posts .post-list {
+  list-style: none;
+  padding: 0;
+}
+
+.blog-posts .post-list li {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #eee;
+}
+
+.blog-posts .post-list li:last-child {
+  border-bottom: none;
+}
+
+.blog-posts .post-meta {
+  color: #666;
+  font-size: 0.9em;
+}
+
+.blog-posts .post-link {
+  display: block;
+  font-size: 1.5em;
+  margin: 0.5rem 0;
+  color: #333;
+  text-decoration: none;
+}
+
+.blog-posts .post-link:hover {
+  color: #0366d6;
+}
+
+.tweets-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  
+  .tweet-card:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.tweets-list {
+  margin-top: 3rem;
+}
+
+.tweets-page .page-heading {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #eee;
+  font-size: 2rem;
+}
+
+.tweet-datetime {
+  color: #666;
+  font-size: 0.9em;
+  margin-bottom: 1rem;
+}
+
+.tweet-content {
+  font-size: 1.1em;
+  line-height: 1.5;
+}
+
+// 导航样式
+.site-nav {
+  .page-link {
+    color: #424242;
+    line-height: 1.5;
+    margin-left: 20px;
+    
+    &:first-child {
+      margin-left: 0;
+    }
+    
+    &:hover {
+      text-decoration: none;
+      color: #0366d6;
+    }
+  }
+  
+  .current {
+    color: #0366d6;
+    font-weight: 500;
+  }
+}
