@@ -21,7 +21,7 @@
 title: Weijian Duan
 email: weijianduan0302@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  想象个人与公共生活的另一种可能
+  想象另一种可能
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: WeijianDuan
@@ -72,4 +72,3 @@ jekyll_compose:
     # 碎碎念的默认 front matter
     tweets:
       layout: tweet
-
