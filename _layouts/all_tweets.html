@@ -19,10 +19,93 @@ layout: default
           </div>
         </div>
         <div class="tweet-content">
-          {{ tweet.content }}
+          {{ tweet.content | replace: '<img', '<img class="tweet-image"' | replace: 'src="/', 'src="' | prepend: site.baseurl | replace: 'src="', 'src="/' }}
         </div>
       </div>
       {%- endfor -%}
     </div>
   </div>
-</div> 
+</div>
+
+<!-- 添加modal容器 -->
+<div class="modal" id="imageModal" onclick="closeModal()">
+  <img id="modalImage" src="" alt="">
+</div>
+
+<style>
+/* 图片容器样式 */
+.tweet-image-container {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.tweet-image {
+  cursor: zoom-in;
+  max-width: 300px;
+  max-height: 300px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  vertical-align: middle;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.tweet-image:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* 在较小屏幕上调整图片大小 */
+@media only screen and (max-width: 700px) {
+  .tweet-image {
+    max-width: 100%;
+    max-height: 250px;
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 首先，为所有图片添加容器
+  document.querySelectorAll('.tweet-image').forEach(function(img) {
+    if (!img.parentElement.classList.contains('tweet-image-container')) {
+      const container = document.createElement('div');
+      container.className = 'tweet-image-container';
+      img.parentNode.insertBefore(container, img);
+      container.appendChild(img);
+    }
+  });
+
+  const images = document.querySelectorAll('.tweet-image');
+  const modal = document.getElementById('imageModal');
+  const modalImg = document.getElementById('modalImage');
+
+  images.forEach(img => {
+    img.title = '点击放大图片';
+    
+    img.addEventListener('click', function() {
+      modal.style.display = 'block';
+      modalImg.src = this.src;
+      setTimeout(() => {
+        modal.classList.add('show');
+      }, 10);
+    });
+  });
+});
+
+function closeModal() {
+  const modal = document.getElementById('imageModal');
+  modal.classList.remove('show');
+  setTimeout(() => {
+    modal.style.display = 'none';
+  }, 300);
+}
+
+// ESC键关闭modal
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeModal();
+  }
+});
+</script> 

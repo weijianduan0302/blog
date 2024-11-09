@@ -20,4 +20,44 @@ layout: default
       <a href="/" class="back-link">← 返回首页</a>
     </footer>
   </div>
-</article> 
+</article>
+
+<!-- 添加modal容器 -->
+<div class="modal" id="imageModal" onclick="closeModal()">
+  <img id="modalImage" src="" alt="">
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const images = document.querySelectorAll('.tweet-detail-content img');
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+
+    images.forEach(img => {
+      img.title = '点击放大图片';
+      
+      img.addEventListener('click', function() {
+        modal.style.display = 'block';
+        modalImg.src = this.src;
+        setTimeout(() => {
+          modal.classList.add('show');
+        }, 10);
+      });
+    });
+  });
+
+  function closeModal() {
+    const modal = document.getElementById('imageModal');
+    modal.classList.remove('show');
+    setTimeout(() => {
+      modal.style.display = 'none';
+    }, 300);
+  }
+
+  // ESC键关闭modal
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeModal();
+    }
+  });
+</script> 

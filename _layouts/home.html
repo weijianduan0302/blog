@@ -104,4 +104,47 @@ layout: default
       {%- endif -%}
     </div>
   </div>
+
+  <!-- 添加modal容器 -->
+  <div class="modal" id="imageModal" onclick="closeModal()">
+    <img id="modalImage" src="" alt="">
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const images = document.querySelectorAll('.tweet-content img');
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+
+      images.forEach(img => {
+        // 添加title提示
+        img.title = '点击放大图片';
+        
+        img.addEventListener('click', function() {
+          modal.style.display = 'block';
+          modalImg.src = this.src;
+          // 触发重排以启动动画
+          setTimeout(() => {
+            modal.classList.add('show');
+          }, 10);
+        });
+      });
+    });
+
+    function closeModal() {
+      const modal = document.getElementById('imageModal');
+      modal.classList.remove('show');
+      // 等待动画完成后隐藏modal
+      setTimeout(() => {
+        modal.style.display = 'none';
+      }, 300);
+    }
+
+    // ESC键关闭modal
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+  </script>
 </div>
